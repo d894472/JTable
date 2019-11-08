@@ -8,7 +8,7 @@ public class Main {
         JtableTest windowns=new JtableTest();
         windowns.JtableTest();
 
-      //  DbTest dt=new DbTest();
-       //dt.DBcon();
-    }
+
+
+         }
 }

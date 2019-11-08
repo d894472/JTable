@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Vector;
@@ -13,7 +14,7 @@ import java.util.Vector;
 public class DbTest  {
     String driver="com.mysql.cj.jdbc.Driver";
     String url="jdbc:mysql://localhost:3306/test?serverTimezone=CST&useUnicode=true&characterEncoding=Big5";
-
+int nos;
     Connection conn= null;
     public  void DBcon(JTable table,DefaultTableModel dtm) throws IOException{
 
@@ -36,23 +37,29 @@ public class DbTest  {
 
                 ResultSet rs=statm.executeQuery(sql);
                 while(rs.next()){
+                    String qno=rs.getString("QualityNo");
                     String simd=rs.getString("SimpleDate".toString());
                     String testingd=rs.getString("TestingDate".toString());
                     String location=rs.getString("Location");
                     String lab=rs.getString("LabName");
                     String quantity=rs.getString("Quantity");
                     String month=rs.getString("Month".toString());
-                    String week=rs.getString("Week".toString());
+                  //  String week=rs.getString("Week".toString());
                     double culb=rs.getDouble("Cubic");
 
-                    dtm.addRow(new Object[]{simd,testingd,location,lab,quantity,month,week,culb});
+                    dtm.addRow(new Object[]{qno,simd,testingd,location,lab,quantity,month,culb});
 
 
 
                 }
+//
+
+
+                conn.close();
+
 
             }
-            conn.close();
+
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -60,8 +67,8 @@ public class DbTest  {
             e.printStackTrace();
         }
 
-
     }
+
 
 
 }

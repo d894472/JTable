@@ -8,15 +8,17 @@ import java.util.Date;
 
 public class DateTest {
     public static void main(String[] args) {
-      SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-       String d="20190926";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String d="2019-11-09";
         try {
             Date dt = sdf.parse(d);
             Calendar cald=Calendar.getInstance();
             cald.setTime(dt);
-            //cald.add(Calendar.DAY_OF_YEAR,30);
-            System.out.println(sdf.format(cald.getTime()));
-          int   week=cald.get(Calendar.DAY_OF_WEEK)-1;
+            cald.add(Calendar.DAY_OF_YEAR,7);
+            System.out.println("7天:"+ sdf.format(cald.getTime()));
+            cald.add(Calendar.DAY_OF_YEAR,28);
+            System.out.println("28天:"+ sdf.format(cald.getTime()));
+            int   week=cald.get(Calendar.DAY_OF_WEEK)-1;
             switch (week){
                 case  0:
                     System.out.println("星期日");
@@ -45,7 +47,7 @@ public class DateTest {
 
 
 
-           // System.out.println(cald.get(Calendar.DAY_OF_WEEK));
+            // System.out.println(cald.get(Calendar.DAY_OF_WEEK));
 
 
 
